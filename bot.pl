@@ -5,6 +5,8 @@
 
 path_list(Path):-Path = [north, south, south, east, west, north].
 
+:- retractall(path(_)), path_list(Path), assert(path(Path)).
+
 /* Convert to lower case if necessary,
 skips some characters,
 works with non latin characters in SWI Prolog. */
@@ -22,7 +24,6 @@ process(Stream) :-
     format(atom(CommandBark), 'say bark bark!~n', []),
     write('CommandBark: '),write(CommandBark),
     write(Stream, CommandBark),
-
     path([Exit|Rest]),
     format(atom(Command), 'move ~w~n', [Exit]),
     write('Command: '),write(Command),
@@ -40,12 +41,12 @@ create_name(Stream):-
     write(Command),
     flush_output(Stream).
 
-read_stream(Stream,Tokens):-
-    read_lines_to_codes(Stream, Codes),
+read_stream(Stream, Tokens):-
+    read_line_to_codes(Stream, Codes),
     filter_codes(Codes, Filtered),
     atom_codes(Atom, Filtered),
     tokenize_atom(Atom, Tokens),
-    write(Stream),
+    write(Atom),
     nl,
     flush_output().
 
