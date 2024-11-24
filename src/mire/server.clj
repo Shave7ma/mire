@@ -61,4 +61,4 @@
      (defonce server (socket/create-server (Integer. port) mire-handle-client))
      (println "Launching Mire server on port" port))
   ([port] (-main port "resources/rooms"))
-  ([] (-main 1488)))
+  ([] (-main 3333)))

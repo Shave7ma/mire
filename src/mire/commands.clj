@@ -197,7 +197,7 @@
   []
   (str/join "\n" (map #(str (key %) ": " (:doc (meta (val %))))
                       (dissoc (ns-publics 'mire.commands)
-                              'execute 'commands))))
+                              'execute 'commands 'commands_with_person 'direction_opposite))))
 
 ;; Command data
 
