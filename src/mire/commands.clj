@@ -31,7 +31,7 @@
                            (disj @(:inhabitants @player/*current-room*) player/*name*)))))
 
 (defn move
-  "\"♬ We gotta get out of this place... ♪\" Give a direction."
+  "\"We gotta get out of this place...\" Give a direction."
   [direction]
   (dosync
    (let [target-name ((:exits @player/*current-room*) (keyword direction))
